@@ -2,6 +2,7 @@ package kibana
 
 import (
 	"crypto/tls"
+	"log"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/jloleysens/go-kibana-rest/v8/kbapi"
@@ -34,16 +35,33 @@ func NewClient(cfg Config) (*Client, error) {
 		cfg.Address = "http://localhost:5601"
 	}
 
+	log.Printf("Kibana address: %s", cfg.ApiKey)
+	log.Printf("Kibana address: %s", cfg.ApiKey)
+	log.Printf("Kibana address: %s", cfg.ApiKey)
+	log.Printf("Kibana address: %s", cfg.ApiKey)
+	log.Printf("Kibana address: %s", cfg.ApiKey)
+	log.Printf("Kibana address: %s", cfg.ApiKey)
+
 	restyClient := resty.New().
 		SetBaseURL(cfg.Address).
 		SetHeader("kbn-xsrf", "true").
 		SetHeader("Content-Type", "application/json")
 
 	if cfg.ApiKey != "" {
+		log.Printf("api key :)")
+		log.Printf("api key :)")
+		log.Printf("api key :)")
+		log.Printf("api key :)")
+		log.Printf("api key :)")
+		log.Printf("api key :)")
 		restyClient = restyClient.
 			SetAuthScheme("ApiKey").
 			SetAuthToken(cfg.ApiKey)
 	} else {
+		log.Printf("basic auth :(")
+		log.Printf("basic auth :(")
+		log.Printf("basic auth :(")
+		log.Printf("basic auth :(")
 		restyClient = restyClient.SetBasicAuth(cfg.Username, cfg.Password)
 	}
 
