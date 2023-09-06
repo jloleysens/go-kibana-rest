@@ -41,7 +41,7 @@ func NewClient(cfg Config) (*Client, error) {
 
 	if cfg.ApiKey != "" {
 		restyClient = restyClient.
-			SetAuthScheme("Bearer").
+			SetAuthScheme("ApiKey").
 			SetAuthToken(cfg.ApiKey)
 	} else {
 		restyClient = restyClient.SetBasicAuth(cfg.Username, cfg.Password)
