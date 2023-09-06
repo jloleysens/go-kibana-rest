@@ -54,6 +54,7 @@ func NewClient(cfg Config) (*Client, error) {
 		log.Printf("api key :)")
 		log.Printf("api key :)")
 		log.Printf("api key :)")
+		log.Printf("api key :)")
 		restyClient = restyClient.
 			SetAuthScheme("ApiKey").
 			SetAuthToken(cfg.ApiKey)
