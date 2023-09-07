@@ -44,6 +44,26 @@ func (s *KBTestSuite) TestNewClient() {
 
 	assert.NoError(s.T(), err)
 	assert.NotNil(s.T(), client)
+	assert.NotNil(s.T(), "Basic", client.Client.AuthScheme)
+	assert.Equal(s.T(), "elastic", client.Client.UserInfo.Username)
+	assert.Equal(s.T(), "changeme", client.Client.UserInfo.Password)
+}
+
+func (s *KBTestSuite) TestNewAPIKeyClient() {
+
+	cfg := Config{
+		Address:          "http://127.0.0.1:5601",
+		ApiKey:           "foo",
+		DisableVerifySSL: true,
+	}
+
+	client, err := NewClient(cfg)
+
+	assert.NoError(s.T(), err)
+	assert.NotNil(s.T(), client)
+
+	assert.Equal(s.T(), "ApiKey", client.Client.AuthScheme)
+	assert.Equal(s.T(), "foo", client.Client.Token, "foo")
 
 }
 
@@ -54,4 +74,8 @@ func (s *KBTestSuite) TestNewDefaultClient() {
 	assert.NoError(s.T(), err)
 	assert.NotNil(s.T(), client)
 
+	assert.NotNil(s.T(), client.Client.AuthScheme, "Basic")
+	assert.Equal(s.T(), client.Client.UserInfo.Username, "")
+	assert.Equal(s.T(), client.Client.UserInfo.Password, "")
+	assert.Equal(s.T(), client.Client.Token, "")
 }
