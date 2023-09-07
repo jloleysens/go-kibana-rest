@@ -2,9 +2,10 @@ package kibana
 
 import (
 	"crypto/tls"
+	"log"
 
-	"github.com/disaster37/go-kibana-rest/v8/kbapi"
 	"github.com/go-resty/resty/v2"
+	"github.com/jloleysens/go-kibana-rest/v8/kbapi"
 )
 
 // Config contain the value to access on Kibana API
