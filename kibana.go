@@ -2,7 +2,6 @@ package kibana
 
 import (
 	"crypto/tls"
-	"log"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/jloleysens/go-kibana-rest/v8/kbapi"
